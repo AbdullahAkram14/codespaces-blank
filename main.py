@@ -1,4 +1,3 @@
-# PreWork Chatbot
 
 def chatbot():
     print("Welcome to the PreWork Chatbot!")
