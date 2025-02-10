@@ -1,10 +1,12 @@
+import random
+
 def chatbot():
-    print("Welcome to the PreWork Chatbot!")
+    print("Welcome to the Store Chatbot!")
     
     name = input("What is your name? ")
     print(f"Nice to meet you, {name}!")
     
-    print("How can I help you today?")
+    orders = {}
     
     while True:
         print("\nMenu:")
@@ -14,17 +16,18 @@ def chatbot():
         print("4. Ask about prices")
         print("5. Check store promotions")
         print("6. Track your order")
-        print("7. Ask a FAQ")
-        print("8. Contact support")
-        print("9. Give feedback")
-        print("10. Exit")
+        print("7. Place a custom order")
+        print("8. Ask a FAQ")
+        print("9. Contact support")
+        print("10. Give feedback")
+        print("11. Exit")
     
-        choice = input("Please select an option (1-10): ")
+        choice = input("Please select an option (1-11): ")
         
         if choice == "1":
             print("Our store is open from 9 AM to 9 PM daily.")
         elif choice == "2":
-            print("We are located at 123 Main Street, Anytown, USA.")
+            print("We are located at 123 Main Street, Texas, USA.")
         elif choice == "3":
             print("We offer a variety of products, including electronics, clothing, and home goods.")
         elif choice == "4":
@@ -33,19 +36,27 @@ def chatbot():
             print("Currently, we have a 20% off sale on all electronics!")
         elif choice == "6":
             order_number = input("Please enter your order number: ")
-            print(f"Tracking details for order #{order_number}: Your order is on its way and should arrive by tomorrow!")
+            if order_number in orders:
+                print(f"Tracking details for order #{order_number}: {orders[order_number]}")
+            else:
+                print("Order not found. Please check your order number.")
         elif choice == "7":
-            print("FAQs: What are your store hours? What products do you offer? How do I contact support?")
+            order_details = input("Please describe your order: ")
+            order_number = str(random.randint(1000, 9999))
+            orders[order_number] = "Order placed. Processing."
+            print(f"Your order has been placed successfully! Your order number is {order_number}.")
         elif choice == "8":
-            print("To contact support, please call 1-800-123-4567 or email support@preworkstore.com.")
+            print("FAQs: What are your store hours? What products do you offer? How do I contact support?")
         elif choice == "9":
+            print("To contact support, please call 1-800-123-4567 or email support@preworkstore.com.")
+        elif choice == "10":
             feedback = input("Please rate your experience from 1 to 5: ")
             if feedback == "5":
                 print("Thank you for the great feedback!")
             else:
                 print("Thank you for your feedback, we will work to improve!")
-        elif choice == "10":
-            print("Thank you for using the PreWork Chatbot. Goodbye!")
+        elif choice == "11":
+            print("Thank you for using the Store Chatbot. Goodbye!")
             break
         else:
             print("Invalid option. Please try again.")
